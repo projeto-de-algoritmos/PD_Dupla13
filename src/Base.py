@@ -7,8 +7,6 @@ for file in [file for file in os.listdir("SOCOFing/Real")][:1000]:
 	pontochave_2, descriptors_2 = sift.detectAndCompute(imagem_digital, None)
 
 
-	compara = cv2.FlannBasedMatcher({'algorithm': 1, 'trees': 10},
-									{}).knnMatch(descriptors_1, descriptors_2, k=2)
 
 
 	verifica_pontos = []
