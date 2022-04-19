@@ -15,14 +15,14 @@ class Solution:
         
         pd = [0 for _ in range(n)]
 		
-		#Pegando a matriz e lendo ela de cima para baixo, o lucro máximo do último, seria o seu próprio lucro
+		#Pegando a matriz e lendo ela de cima para baixo, o lucro máximo do último, seria o seu próprio lucro, bottom up
         pd[n-1] = trabalhos[n-1][2]
         
         for i in range(n-2,-1,-1):
-			#Encontra o primeiro indice da matriz onde o trabalho termina
+			#Encontra o primeiro indice da matriz onde o trabalho/job termina
             idx = bisect.bisect_left(inicio, trabalhos[i][1], i, n)
 			
-			#O lucro máximo para este índice seria o máximo de atual + próximo trabalho ou o job(i+1)
+			#O pd recebe o valor max do idx
             pd[i] = max(pd[i+1], trabalhos[i][2]+ (pd[idx] if idx < n else 0) )
         
         return pd[0]
